@@ -1,0 +1,15 @@
+# ENV
+.env
+.env.local
+.env.*
+
+# OS
+.DS_Store
+
+# Logs
+*.log
+
+# Build output
+out/
+
+backend/.env
