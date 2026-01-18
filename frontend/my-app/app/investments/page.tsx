@@ -3,6 +3,7 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { CheckCircle } from "lucide-react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 export default function InvestmentsPage() {
   return (
@@ -25,14 +26,14 @@ export default function InvestmentsPage() {
       {/* MAIN CONTENT */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50">
         <div className="max-w-5xl mx-auto">
-
           {/* TARGET SECTORS */}
           <div className="mb-24 fade-up">
             <h2 className="text-3xl font-semibold text-gray-800 mb-6">
               Targeted Sectors
             </h2>
             <p className="text-gray-600 mb-6">
-              The broad areas of investment of the fund include but are not limited to:
+              The broad areas of investment of the fund include but are not
+              limited to:
             </p>
 
             <ul className="space-y-4">
@@ -52,42 +53,25 @@ export default function InvestmentsPage() {
             </ul>
           </div>
 
-{/* INVESTMENT PROCESS */}
-<div className="mb-24 fade-up">
-  <h2 className="text-3xl font-semibold text-gray-800 mb-10">
-    Investment Process / Due Diligence Flow
-  </h2>
-
-  <div className="space-y-5 border-l-4 border-[#D2691E] pl-6">
-    {[
-      "Initial Screening & Understanding the Business",
-      "Preliminary Analysis (Initial Due Diligence)",
-      "Term Sheet Signing",
-      "Comprehensive Due Diligence",
-      "Investment Committee (IC) Approval",
-      "Deal Structuring",
-      "Negotiation and Final Term Sheet",
-      "Preparation & Signing of Definitive Agreement",
-      "Fulfillment of Conditions Precedent",
-      "Capital Injection (Fund Disbursement)",
-      "Post-Investment Monitoring",
-      "Value Addition & Strategic Support",
-      "Exit Planning and Execution",
-    ].map((step, i) => (
-      <motion.div
-        key={i}
-        initial={{ opacity: 0, x: 50 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ delay: i * 0.1, duration: 0.5 }}
-        className="flex items-start gap-4"
-      >
-        <div className="mt-1 w-3 h-3 rounded-full bg-[#6C757D] flex-shrink-0"></div>
-        <p className="text-gray-700 text-sm md:text-base">{step}</p>
-      </motion.div>
-    ))}
-  </div>
-</div>
-
+          {/* INVESTMENT PROCESS */}
+          <div className="mb-24 fade-up">
+            <h2 className="text-3xl font-semibold text-gray-800 mb-10">
+              Investment Process / Due Diligence Flow
+            </h2>            
+            {/* Infographics */}
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 1, duration: 0.5 }}
+              className="relative w-full lg:w-10/12 h-[44vh] md:h-[60vh] lg:h-[70vh] xl:h-[90vh]"
+            >
+              <Image
+                src={"/images/due-delligence.png"}
+                alt="investment process infographics"
+                fill
+              />
+            </motion.div>
+          </div>
 
           {/* INVESTMENT FOCUS */}
           <div className="mb-24 fade-up">
@@ -97,14 +81,16 @@ export default function InvestmentsPage() {
 
             <p className="text-gray-600 leading-relaxed">
               The Fund targets early-stage SMEs with scalable business models,
-              growth-stage companies preparing for public listing, and high-return
-              potential businesses in priority sectors identified by the Government
-              of Nepal (GoN), including energy and infrastructure.
+              growth-stage companies preparing for public listing, and
+              high-return potential businesses in priority sectors identified by
+              the Government of Nepal (GoN), including energy and
+              infrastructure.
             </p>
 
             <p className="text-gray-600 leading-relaxed mt-4">
-              The Fund also prioritizes import-substituting and export-oriented enterprises,
-              supporting sustainable economic development and value creation.
+              The Fund also prioritizes import-substituting and export-oriented
+              enterprises, supporting sustainable economic development and value
+              creation.
             </p>
           </div>
 
@@ -117,25 +103,27 @@ export default function InvestmentsPage() {
             <Card className="shadow-md">
               <CardContent className="p-8">
                 <p className="text-gray-700 leading-relaxed mb-4">
-                  Maverick Fund-101 is a governance-driven private equity fund positioned
-                  to harness Nepal’s rapidly expanding renewable energy and mid-market sectors.
+                  Maverick Fund-101 is a governance-driven private equity fund
+                  positioned to harness Nepal’s rapidly expanding renewable
+                  energy and mid-market sectors.
                 </p>
 
                 <p className="text-gray-700 leading-relaxed mb-4">
-                  With a corpus of <strong>NPR 75 Crore</strong>, the Fund aims to attract
-                  high-net-worth individuals and institutional investors seeking priority
-                  returns, strategic involvement, and exposure to high-growth opportunities.
+                  With a corpus of <strong>NPR 75 Crore</strong>, the Fund aims
+                  to attract high-net-worth individuals and institutional
+                  investors seeking priority returns, strategic involvement, and
+                  exposure to high-growth opportunities.
                 </p>
 
                 <p className="text-gray-700 leading-relaxed">
-                  Focused on fundamentally strong, growth-stage companies and pre-IPO prospects,
-                  the Fund provides active value creation, operational guidance, and strategic
-                  oversight—driving sustainable development and long-term value creation.
+                  Focused on fundamentally strong, growth-stage companies and
+                  pre-IPO prospects, the Fund provides active value creation,
+                  operational guidance, and strategic oversight—driving
+                  sustainable development and long-term value creation.
                 </p>
               </CardContent>
             </Card>
           </div>
-
         </div>
       </section>
 
