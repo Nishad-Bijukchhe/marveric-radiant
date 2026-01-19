@@ -57,20 +57,15 @@ export default function InvestmentsPage() {
           <div className="mb-24 fade-up">
             <h2 className="text-3xl font-semibold text-gray-800 mb-10">
               Investment Process / Due Diligence Flow
-            </h2>            
+            </h2>
             {/* Infographics */}
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 1, duration: 0.5 }}
-              className="relative w-full lg:w-10/12 h-[44vh] md:h-[60vh] lg:h-[70vh] xl:h-[90vh]"
-            >
+            <div className="relative w-full lg:w-10/12 h-[44vh] md:h-[60vh] lg:h-[70vh] xl:h-[90vh]">
               <Image
                 src={"/images/due-delligence.png"}
                 alt="investment process infographics"
                 fill
               />
-            </motion.div>
+            </div>
           </div>
 
           {/* INVESTMENT FOCUS */}
