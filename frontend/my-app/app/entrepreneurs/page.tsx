@@ -18,8 +18,7 @@ function Entrepreneurs() {
           >
             <div className="text-center mb-16 w-full">
               <h2 className="text-4xl font-bold text-gray-900 mb-4">
-                For <span className="text-green-600">Entrepreneurs</span> &
-                Project Sponsors
+                Partner With <span className="text-green-600">Maverick</span>
               </h2>
               <div className="text-gray-600 text-xl mb-4">
                 Seeking growth capital or project-level investment
