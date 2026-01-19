@@ -1,19 +1,42 @@
-'use client';
-import React, { useState, useEffect } from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
-import { ChevronRight, Handshake, Mail, Phone, MapPin, Shield, BookOpen, LineChart, TrendingUp, Briefcase, Lightbulb, Target } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+"use client";
+import React, { useState, useEffect } from "react";
+import Link from "next/link";
+import Image from "next/image";
+import {
+  ChevronRight,
+  Handshake,
+  Mail,
+  Phone,
+  MapPin,
+  Shield,
+  BookOpen,
+  LineChart,
+  TrendingUp,
+  Briefcase,
+  Lightbulb,
+  Target,
+} from "lucide-react";
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { motion } from "framer-motion";
-import TypingMaveric from './animation';
-import { HeroSection } from '@/utils/slider';
-import { FaCheckSquare, FaRegCheckSquare, FaCog, FaChartLine } from "react-icons/fa";
+import TypingMaveric from "./animation";
+import { HeroSection } from "@/utils/slider";
+import {
+  FaCheckSquare,
+  FaRegCheckSquare,
+  FaCog,
+  FaChartLine,
+} from "react-icons/fa";
 
 interface MaverickWebsiteClientProps {
   heroData: HeroSection | null;
 }
-
 
 export default function MaverickWebsiteClient({
   heroData,
@@ -29,8 +52,6 @@ export default function MaverickWebsiteClient({
   const sliderImages = heroData?.images ?? [];
   // const heroHeading = "Transforming Nepali Enterprises Through Strategic Investment";
   // const heroParagraph = "SEBON-licensed Private Equity and Venture Capital fund manager committed to empowering Nepal's private sector";
-
-
 
   // const sliderImages = [
   //   "/images/slider1.jpg",
@@ -49,26 +70,24 @@ export default function MaverickWebsiteClient({
     return () => clearInterval(interval);
   }, [sliderImages.length]);
 
-
   const values = [
     {
       image: "images/Collaboration.png",
-      title: "Collaboration and Discipline"
+      title: "Collaboration and Discipline",
     },
     {
       image: "images/Impact.png",
-      title: "Impact and Sustainability"
+      title: "Impact and Sustainability",
     },
     {
       image: "images/Innovation.png",
-      title: "Innovation and Entrepreneurship"
+      title: "Innovation and Entrepreneurship",
     },
     {
       image: "images/integrity.png",
-      title: "Integrity and Governance"
-    }
+      title: "Integrity and Governance",
+    },
   ];
-
 
   useEffect(() => {
     const handleScroll = () => {
@@ -90,27 +109,32 @@ export default function MaverickWebsiteClient({
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      element.scrollIntoView({ behavior: "smooth" });
       setMobileMenuOpen(false);
     }
   };
 
   return (
     <div className="min-h-screen bg-white">
-
       <section id="home" className="relative w-full h-screen overflow-hidden">
         {/* Slider Images */}
         {sliderImages.map((src, index) => (
           <div
             key={index}
-            className={`absolute top-0 left-0 w-full h-full object-cover transition-transform duration-1000 ease-in-out ${index === currentIndex
-              ? "translate-x-0"
-              : index === (currentIndex - 1 + sliderImages.length) % sliderImages.length
-                ? "-translate-x-full"
-                : "translate-x-full"
-              }`}
+            className={`absolute top-0 left-0 w-full h-full object-cover transition-transform duration-1000 ease-in-out ${
+              index === currentIndex
+                ? "translate-x-0"
+                : index ===
+                    (currentIndex - 1 + sliderImages.length) %
+                      sliderImages.length
+                  ? "-translate-x-full"
+                  : "translate-x-full"
+            }`}
           >
-            <img src={`http://127.0.0.1:8000${sliderImages[currentIndex]?.image}`} className="w-full h-full object-cover" />
+            <img
+              src={`http://127.0.0.1:8000${sliderImages[currentIndex]?.image}`}
+              className="w-full h-full object-cover"
+            />
           </div>
         ))}
 
@@ -127,7 +151,6 @@ export default function MaverickWebsiteClient({
             transition={{ duration: 1 }}
           >
             {heroHeading}
-
           </motion.h1>
           <motion.p
             className="text-sm sm:text-xl lg:text-3xl text-white font-semibold mb-8 max-w-3xl mx-auto text-center leading-relaxed drop-shadow-lg"
@@ -174,7 +197,6 @@ export default function MaverickWebsiteClient({
               </Link>
             </motion.div>
           </div> */}
-
         </div>
 
         {/* Slider dots at very bottom */}
@@ -183,19 +205,17 @@ export default function MaverickWebsiteClient({
             <button
               key={index}
               onClick={() => setCurrentIndex(index)}
-              className={`w-2 h-2 rounded-full transition-all ${index === currentIndex ? "bg-white w-8" : "bg-white/50"
-                }`}
+              className={`w-2 h-2 rounded-full transition-all ${
+                index === currentIndex ? "bg-white w-8" : "bg-white/50"
+              }`}
               aria-label={`Go to slide ${index + 1}`}
             />
           ))}
         </div>
       </section>
 
-
-
       <section className="py-16 bg-green-900 text-white relative overflow-hidden">
         <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
-
           {/* Section Heading */}
           <motion.h2
             className="text-3xl sm:text-4xl font-bold text-center mb-8"
@@ -215,12 +235,13 @@ export default function MaverickWebsiteClient({
             viewport={{ once: false, amount: 0.2 }}
             transition={{ duration: 0.8, delay: 0.3 }}
           >
-            Maverick Kautilya Venture Limited is a Nepal-focused private equity and venture capital firm investing in scalable businesses across energy, infrastructure, and mid-market enterprises.
+            Maverick Kautilya Venture Limited is a Nepal-focused private equity
+            and venture capital firm investing in scalable businesses across
+            energy, infrastructure, and mid-market enterprises.
           </motion.p>
 
           {/* 3-Column Infographic */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-7xl mx-auto">
-
             {/* Column 1 – What We Invest In */}
             <motion.div
               className="bg-white/10 p-6 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 flex flex-col items-center"
@@ -277,13 +298,9 @@ export default function MaverickWebsiteClient({
                 <li>Clear Exit Orientation</li>
               </ul>
             </motion.div>
-
           </div>
         </div>
       </section>
-
-
-
 
       <div className="bg-gray-50 rounded-xl p-10">
         <h3 className="text-3xl font-bold text-gray-900 mb-14 text-center">
@@ -315,7 +332,6 @@ export default function MaverickWebsiteClient({
                   <h4 className="text-white text-lg font-semibold mb-1">
                     {item.title}
                   </h4>
-
                 </div>
               </div>
             </motion.div>
@@ -323,14 +339,10 @@ export default function MaverickWebsiteClient({
         </div>
       </div>
 
-
-      <section>
-
-      </section>
+      <section></section>
 
       <section id="services" className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50">
         <div className="max-w-7xl mx-auto">
-
           {/* Section Heading */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -347,7 +359,6 @@ export default function MaverickWebsiteClient({
 
           {/* Cards Grid */}
           <div className="grid md:grid-cols-2 gap-8">
-
             {/* Card 1 */}
             <Card className="cursor-pointer transition-transform duration-300 hover:scale-105 hover:shadow-lg">
               <CardHeader className="flex flex-row items-center justify-center gap-4">
@@ -358,26 +369,41 @@ export default function MaverickWebsiteClient({
               </CardHeader>
               <CardContent className="text-left">
                 <p className="text-gray-600 mb-2">
-                  We leverage a deep, relationship-driven ecosystem across Nepal’s financial and infrastructure landscape to originate and structure proprietary opportunities.
+                  We leverage a deep, relationship-driven ecosystem across
+                  Nepal’s financial and infrastructure landscape to originate
+                  and structure proprietary opportunities.
                 </p>
                 <ul className="text-gray-600 space-y-2 list-disc list-outside ml-6">
                   <li>
-                    Active engagement with <span className='font-bold text-gray-700'> IPPAN and the hydropower developer community </span>
+                    Active engagement with{" "}
+                    <span className="font-bold text-gray-700">
+                      {" "}
+                      IPPAN and the hydropower developer community{" "}
+                    </span>
                   </li>
                   <li>
-                    Strong working relationships with <span className='font-bold text-gray-700'>commercial banks, development banks, and financial institutions </span>
+                    Strong working relationships with{" "}
+                    <span className="font-bold text-gray-700">
+                      commercial banks, development banks, and financial
+                      institutions{" "}
+                    </span>
                   </li>
                   <li>
-                    Access to <span className='font-bold text-gray-700'>strategic co-investors, EPC partners, and project sponsors </span>
+                    Access to{" "}
+                    <span className="font-bold text-gray-700">
+                      strategic co-investors, EPC partners, and project
+                      sponsors{" "}
+                    </span>
                   </li>
                   <li>
-                    Ability to structure investments across <span className='font-bold text-gray-700'>equity, quasi-equity, and structured capital </span>
+                    Ability to structure investments across{" "}
+                    <span className="font-bold text-gray-700">
+                      equity, quasi-equity, and structured capital{" "}
+                    </span>
                   </li>
                 </ul>
               </CardContent>
             </Card>
-
-
 
             {/* Card 2 */}
             <Card className="cursor-pointer transition-transform duration-300 hover:scale-105 hover:shadow-lg">
@@ -389,17 +415,41 @@ export default function MaverickWebsiteClient({
               </CardHeader>
               <CardContent className="text-left">
                 <p className="text-gray-700 mb-2">
-                  Our investment decisions are led by practitioners with hands-on sector experience rather than generalist capital allocators:
+                  Our investment decisions are led by practitioners with
+                  hands-on sector experience rather than generalist capital
+                  allocators:
                 </p>
                 <ul className="text-gray-600 space-y-2 list-disc list-outside ml-6">
-                  <li><span className='font-bold text-gray-700'>Seasoned hydropower experts and project developers </span> with on-ground execution experience</li>
-                  <li>Professionals from the <span className='font-bold text-gray-700'> private equity and project finance ecosystem</span></li> 
-                  <li>In-house and affiliated expertise from the <span className='font-bold text-gray-700'>legal and regulatory advisory space </span></li>
-                  <li>Deep understanding of  <span className='font-bold text-gray-700'> licensing, PPA structures, construction risk, and regulatory frameworks </span></li>
+                  <li>
+                    <span className="font-bold text-gray-700">
+                      Seasoned hydropower experts and project developers{" "}
+                    </span>{" "}
+                    with on-ground execution experience
+                  </li>
+                  <li>
+                    Professionals from the{" "}
+                    <span className="font-bold text-gray-700">
+                      {" "}
+                      private equity and project finance ecosystem
+                    </span>
+                  </li>
+                  <li>
+                    In-house and affiliated expertise from the{" "}
+                    <span className="font-bold text-gray-700">
+                      legal and regulatory advisory space{" "}
+                    </span>
+                  </li>
+                  <li>
+                    Deep understanding of{" "}
+                    <span className="font-bold text-gray-700">
+                      {" "}
+                      licensing, PPA structures, construction risk, and
+                      regulatory frameworks{" "}
+                    </span>
+                  </li>
                 </ul>
               </CardContent>
             </Card>
-
 
             {/* Card 3 */}
             <Card className="cursor-pointer transition-transform duration-300 hover:scale-105 hover:shadow-lg">
@@ -411,17 +461,40 @@ export default function MaverickWebsiteClient({
               </CardHeader>
               <CardContent className="text-left">
                 <p className="text-gray-700 mb-2">
-                  We pursue focused diversification within the hydropower and infrastructure ecosystem to enhance portfolio resilience:
+                  We pursue focused diversification within the hydropower and
+                  infrastructure ecosystem to enhance portfolio resilience:
                 </p>
                 <ul className="text-gray-600 space-y-2 list-disc list-outside ml-6">
-                  <li><span className='font-bold text-gray-700'> Geographical diversification within the hydropower sector </span> across river basins and regions</li>
-                  <li>Exposure across <span className='font-bold text-gray-700'> different project sizes and development stages </span></li>
-                  <li>Risk balancing through <span className='font-bold text-gray-700'> portfolio construction rather than single-asset concentration </span></li>
-                  <li>Ability to capture opportunities across varying hydrological and market conditions</li>
+                  <li>
+                    <span className="font-bold text-gray-700">
+                      {" "}
+                      Geographical diversification within the hydropower
+                      sector{" "}
+                    </span>{" "}
+                    across river basins and regions
+                  </li>
+                  <li>
+                    Exposure across{" "}
+                    <span className="font-bold text-gray-700">
+                      {" "}
+                      different project sizes and development stages{" "}
+                    </span>
+                  </li>
+                  <li>
+                    Risk balancing through{" "}
+                    <span className="font-bold text-gray-700">
+                      {" "}
+                      portfolio construction rather than single-asset
+                      concentration{" "}
+                    </span>
+                  </li>
+                  <li>
+                    Ability to capture opportunities across varying hydrological
+                    and market conditions
+                  </li>
                 </ul>
               </CardContent>
             </Card>
-
 
             {/* Card 4 */}
             <Card className="cursor-pointer transition-transform duration-300 hover:scale-105 hover:shadow-lg">
@@ -433,63 +506,87 @@ export default function MaverickWebsiteClient({
               </CardHeader>
               <CardContent className="text-left">
                 <p className="text-gray-700 mb-2">
-                  Sustainability is embedded as a risk and value lens, not a marketing overlay:
+                  Sustainability is embedded as a risk and value lens, not a
+                  marketing overlay:
                 </p>
                 <ul className="text-gray-600 space-y-2 list-disc list-outside ml-6">
-                  <li>Integration of <span className='font-bold text-gray-700'> environmental, social, and governance (ESG) considerations </span> into investment decisions</li>
-                  <li>Alignment with <span className='font-bold text-gray-700'> national energy priorities and long-term development goals </span></li>
-                  <li>Emphasis on <span className='font-bold text-gray-700'> governance, transparency, and institutional reporting standards </span> </li>
-                  <li>Focus on generating durable returns while minimizing adverse environmental and social impact</li>
+                  <li>
+                    Integration of{" "}
+                    <span className="font-bold text-gray-700">
+                      {" "}
+                      environmental, social, and governance (ESG)
+                      considerations{" "}
+                    </span>{" "}
+                    into investment decisions
+                  </li>
+                  <li>
+                    Alignment with{" "}
+                    <span className="font-bold text-gray-700">
+                      {" "}
+                      national energy priorities and long-term development
+                      goals{" "}
+                    </span>
+                  </li>
+                  <li>
+                    Emphasis on{" "}
+                    <span className="font-bold text-gray-700">
+                      {" "}
+                      governance, transparency, and institutional reporting
+                      standards{" "}
+                    </span>{" "}
+                  </li>
+                  <li>
+                    Focus on generating durable returns while minimizing adverse
+                    environmental and social impact
+                  </li>
                 </ul>
               </CardContent>
             </Card>
-
-
           </div>
         </div>
       </section>
 
-
       <section id="whatWeDo" className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50">
         <div className="max-w-7xl mx-auto">
-
           {/* Heading */}
           <div className="text-center mb-16 fade-up">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">What We Do</h2>
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+              What We Do
+            </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Comprehensive investment and advisory services to drive sustainable growth
+              Comprehensive investment and advisory services to drive
+              sustainable growth
             </p>
           </div>
 
           {/* HORIZONTAL SCROLL ROW */}
           <div className="flex space-x-8 overflow-x-auto pb-4 no-scrollbar">
-
             {[
               {
                 title: "Private Equity Investments",
                 desc: "Maverick invests in SMEs, startups, and companies nearing IPO — providing capital, strategy, and hands-on growth support.",
-                Icon: LineChart
+                Icon: LineChart,
               },
               {
                 title: "Financial Optimization & Capital Structuring",
                 desc: "We improve capital structure, profitability, cash flow, and long-term stability for sustainable growth.",
-                Icon: TrendingUp
+                Icon: TrendingUp,
               },
               {
                 title: "Institutional Liaison & Credit Facilitation",
                 desc: "We connect businesses with banks to secure subsidized loans, structured financing, and optimized credit solutions.",
-                Icon: Briefcase
+                Icon: Briefcase,
               },
               {
                 title: "Advisory & Value-Creation Services",
                 desc: "End-to-end advisory including modeling, business planning, governance, and strategic restructuring.",
-                Icon: Lightbulb
+                Icon: Lightbulb,
               },
               {
                 title: "Growth & Exit Preparation",
                 desc: "We prepare companies for IPOs, strategic exits, and scaled expansion with governance and market readiness.",
-                Icon: Target
-              }
+                Icon: Target,
+              },
             ].map((item, i) => (
               <Card
                 key={i}
@@ -511,7 +608,6 @@ export default function MaverickWebsiteClient({
                 </CardHeader>
               </Card>
             ))}
-
           </div>
         </div>
 
@@ -530,7 +626,6 @@ export default function MaverickWebsiteClient({
           }
         `}</style>
       </section>
-
 
       {/* <section
         id="investments"
@@ -606,8 +701,6 @@ export default function MaverickWebsiteClient({
   `}</style>
       </section> */}
 
-
-
       {/* <section id="news" className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50">
         <div className="max-w-7xl mx-auto">
 
@@ -680,7 +773,12 @@ export default function MaverickWebsiteClient({
             <CardContent className="flex flex-col items-center gap-3">
               <Phone className="w-6 h-6 text-[#D9534F]" />
               <h3 className="font-semibold">Phone</h3>
-              <a href="tel:9704583930" className="text-black-900 hover:underline">14547944 / 9704583930</a>
+              <a
+                href="tel:9704583930"
+                className="text-black-900 hover:underline"
+              >
+                14547944 / 9704583930
+              </a>
             </CardContent>
           </Card>
 
@@ -688,12 +786,16 @@ export default function MaverickWebsiteClient({
             <CardContent className="flex flex-col items-center gap-3">
               <Mail className="w-6 h-6 text-blue-600" />
               <h3 className="font-semibold">Email</h3>
-              <a href="mailto:maverickkautilya@gmail.com" className="text-black-900 hover:underline">venture@maverickkautilya.com</a>
+              <a
+                href="mailto:maverickkautilya@gmail.com"
+                className="text-black-900 hover:underline"
+              >
+                venture@maverickkautilya.com
+              </a>
             </CardContent>
           </Card>
         </div>
       </section>
-
     </div>
   );
 }
