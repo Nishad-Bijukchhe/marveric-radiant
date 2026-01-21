@@ -1,4 +1,3 @@
-import { Card } from "@/components/ui/card";
 import React from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 
@@ -8,6 +7,7 @@ type Inputs = {
   email: string;
   company: string;
   location: string;
+  file: FileList;
 };
 
 type FormPropType = {
@@ -23,7 +23,19 @@ const MyForm = ({ className }: FormPropType) => {
   } = useForm<Inputs>();
 
   // on form submission
-  const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
+  const onSubmit: SubmitHandler<Inputs> = (data) => {
+    // Access the first file from the file list
+    const file = data.file[0];
+
+    // Create FormData (standard "proper" way to send files)
+    // Think of FormData as a digital "envelope" designed specifically for sending files and form inputs.
+    const formData = new FormData();
+    formData.append("file", file);
+
+    // This is the form data.
+    // BRO! If you have any issue accessing the uploaded file try to access it by: data.file[0]
+    console.log(data);
+  };
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={`w-full ${className}`}>
       {/* NAME */}
@@ -79,6 +91,30 @@ const MyForm = ({ className }: FormPropType) => {
       <input
         {...register("location")}
         className="border rounded-sm my-2 p-2 w-full"
+      />
+
+      {/* FILE UPLOAD */}
+      {errors.file && (
+        <div className="text-red-600 text-xs ms-2">{errors.file.message}</div>
+      )}
+      <input
+        className="file:text-lg file:text-white bg-green-600 hover:bg-green-700 text-gray-700   font-semibold py-2 px-4 my-4 rounded-lg w-full"
+        type="file"
+        accept=".pdf, .docx" //HTML level restriction
+        {...register("file", {
+          required: "Please select a file.",
+          validate: {
+            // Validate file size (i.e., less than 20MB)
+            lessThan20MB: (files) =>
+              files[0]?.size < 20 * 1024 * 1024 || "*max file size is 20MB",
+            //Validate file type
+            acceptedFormats: (files) =>
+              [
+                "application/pdf",
+                "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+              ].includes(files[0]?.type) || "Only PDF or DOCX allowed",
+          },
+        })}
       />
 
       {/* SUBMIT BUTTON */}
