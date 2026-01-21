@@ -2,9 +2,11 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { motion } from "framer-motion";
 import { ChartNoAxesCombined, HandCoins, LineChart, Scale } from "lucide-react";
-import React from "react";
+import React, { useState } from "react";
+import MyForm from "../components/myForm";
 
 function LimitedPartners() {
+  const [isFormVisible, setIsFormVisible] = useState(false);
   return (
     <div className="mt-20 flex flex-col flex-1">
       <section id="services" className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50">
@@ -20,7 +22,7 @@ function LimitedPartners() {
               <h2 className="text-4xl font-bold text-gray-900 mb-4 flex justify-center items-center gap-3">
                 Partner With <span className="text-green-600">Maverick</span>
               </h2>
-              <div className="text-gray-600 text-xl mb-4">
+              <div className="text-gray-600 font-semibold text-xl mb-4">
                 Institutional and strategic investors seeking exposure to
                 Nepal’s growth sectors
               </div>
@@ -130,6 +132,20 @@ function LimitedPartners() {
               </CardContent>
             </Card>
           </div>
+
+          {/* CTA button for Form */}
+          <button
+            onClick={() => setIsFormVisible((prev) => !prev)}
+            className="block bg-green-600 hover:bg-green-700 text-white font-semibold my-8 mx-auto  px-8 py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+          >
+            Request Fund Information
+          </button>
+          {/* FORM */}
+          <Card
+            className={`${isFormVisible ? "flex" : "hidden"} p-4 md:w-10/12 max-w-4xl mx-auto`}
+          >
+            <MyForm className="text-gray-700" />
+          </Card>
         </div>
       </section>
     </div>
