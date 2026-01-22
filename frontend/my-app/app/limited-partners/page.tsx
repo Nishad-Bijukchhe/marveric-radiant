@@ -4,6 +4,29 @@ import { motion } from "framer-motion";
 import { ChartNoAxesCombined, HandCoins, LineChart, Scale } from "lucide-react";
 import React, { useState } from "react";
 import MyForm from "../components/myForm";
+import Image from "next/image";
+
+const fundOverviewData = [
+  { title: "Name", content: "Maverick Fund 101" },
+  { title: "Fund Size", content: "NPR 75 crore" },
+  {
+    title: "Nature of Fund",
+    content: "Closed-end (Specialized Investment Fund)",
+  },
+  { title: "Sectors", content: "Energy Infrastructure & MME" },
+  { title: "Tenure", content: "10 years" },
+  { title: "Management Fee", content: "2% p.a." },
+  { title: "Hurdle Rate", content: "8%" },
+  { title: "Carried Interest", content: "20% (above hurdle rate)" },
+  { title: "Number of Deals", content: "5-7 deals in totality" },
+  {
+    title: "Targeted Fund IRR",
+    content:
+      "LP: 16% (Adverse) to 31% (Expected) | Net: 17% (Adverse) to 34% (Expected)",
+  },
+  { title: "LP Contribution", content: "98% of committed capital" },
+  { title: "GP Contribution", content: "2% of committed capital" },
+];
 
 function LimitedPartners() {
   const [isFormVisible, setIsFormVisible] = useState(false);
@@ -22,114 +45,153 @@ function LimitedPartners() {
               <h2 className="text-4xl font-bold text-gray-900 mb-4 flex justify-center items-center gap-3">
                 Partner With <span className="text-green-600">Maverick</span>
               </h2>
-              <div className="text-gray-600 font-semibold text-xl mb-4">
+              <div className="text-gray-600 font-semibold text-xl italic mb-4 ">
                 Institutional and strategic investors seeking exposure to
-                Nepal’s growth sectors
+                high-growth opportunities
               </div>
               <div className="text-gray-600">
-                At Maverick Kautilya, we provide our investors with a
-                comprehensive view of our funds, strategies, and operations to
-                ensure informed investment decisions. Our approach combines
-                transparency, flexibility, and alignment with investor
-                interests.
+                Our platform is built on transparency, flexibility, and strong
+                alignment with investor interests.
               </div>
             </div>
           </motion.div>
 
           {/* Cards Grid */}
-          <div className="grid md:grid-cols-2 gap-8">
+          <div>
             {/* Card 1 */}
-            <Card className="cursor-pointer transition-transform duration-300 hover:scale-105 hover:shadow-lg">
+            <Card className="cursor-pointer transition-transform duration-300 hover:scale-105 hover:shadow-lg max-w-5xl mx-auto mb-8">
               <CardHeader className="flex flex-row items-center justify-center gap-4">
                 <HandCoins className="w-12 h-12 text-green-600 shrink-0" />
                 <CardTitle className="text-2xl font-bold text-center">
-                  Fund & Strategy Overview
+                  Fund Overview
                 </CardTitle>
               </CardHeader>
               <CardContent className="text-left">
-                <ul className="text-gray-600 space-y-2 list-disc list-outside ml-6">
-                  <li>Fund presentations and investment highlights</li>
-
-                  <li>
-                    Core investment strategy, portfolio construction, and sector
-                    focus
+                {/* <ul className="text-gray-600 space-y-2 list-disc list-outside ml-6">
+                  <li className="flex justify-between">
+                    <span>Name:</span>
+                    <span>Maverick Fund 101</span>
                   </li>
-                  <li>
-                    Expected returns, target hurdle rates, and exit strategy
-                    considerations
+                  <li className="flex justify-between">
+                    <span>Fund Size:</span>
+                    <span>NPR 75 crore</span>
                   </li>
-                </ul>
+                  <li className="flex justify-between">
+                    <span>Nature of Fund:</span>
+                    <span>Closed-end (Specialized Investment Fund)</span>
+                  </li>
+                  <li className="flex justify-between">
+                    <span>Sectors:</span>
+                    <span>Energy Infrastructure & MME</span>
+                  </li>
+                  <li className="flex justify-between">
+                    <span>Tenure:</span>
+                    <span>10 years</span>
+                  </li>
+                  <li className="flex justify-between">
+                    <span>Management Fee:</span>
+                    <span>2% p.a.</span>
+                  </li>
+                  <li className="flex justify-between">
+                    <span>Hurdle Rate:</span>
+                    <span>8%</span>
+                  </li>
+                  <li className="flex justify-between">
+                    <span>Carried Interest:</span>
+                    <span>20% (above hurdle rate)</span>
+                  </li>
+                  <li className="flex justify-between">
+                    <span>Number of Deals:</span>
+                    <span>5-7 deals in totality</span>
+                  </li>
+                  <li className="flex justify-between">
+                    <span>Targeted Fund IRR:</span>
+                    <span className="text-right">
+                      Net IRR to LP: 16% – 31% <br />
+                      Net Fund IRR: 17% – 34%
+                    </span>
+                  </li>
+                  <li className="flex justify-between">
+                    <span>LP Contribution:</span>
+                    <span>98% of committed capital</span>
+                  </li>
+                  <li className="flex justify-between">
+                    <span>GP Contribution:</span>
+                    <span>2% of committed capital</span>
+                  </li>
+                </ul> */}
+                <div className="flex gap-8 md:gap-24 text-gray-700 italic mx-auto w-fit">
+                  {/* left div */}
+                  <div className="w-fit font-semibold flex flex-col gap-4">
+                    {fundOverviewData.map((item, index) => {
+                      return (
+                        <div>
+                          {index + 1}. {item.title}
+                        </div>
+                      );
+                    })}
+                  </div>
+                  {/* right div */}
+                  <div className="w-fit flex flex-col gap-4">
+                    {fundOverviewData.map((item) => {
+                      return <div className="truncate">{item.content}</div>;
+                    })}
+                    {/* <div>→ LPs get original investment back</div>
+                    <div>→ LPs get 8% annually</div>
+                    <div>→ Remaining profits split (80% LP / 20% GP)</div> */}
+                  </div>
+                </div>
               </CardContent>
             </Card>
 
             {/* Card 2 */}
-            <Card className="cursor-pointer transition-transform duration-300 hover:scale-105 hover:shadow-lg">
-              <CardHeader className="flex flex-row items-center justify-center gap-4">
-                <Scale className="w-12 h-12 text-green-600 shrink-0" />
-                <CardTitle className="text-2xl font-bold text-center">
-                  Legal & Governance Framework
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="text-left">
-                <ul className="text-gray-600 space-y-2 list-disc list-outside ml-6">
-                  <li>
-                    Limited Partnership Agreement (LPA) or equivalent structure
-                    documents
-                  </li>
-                  <li>
-                    Fund governance, management fee, and carried interest
-                    structure
-                  </li>
-                  <li>
-                    Alignment of interests through GP commitment and robust
-                    conflict-of-interest policies
-                  </li>
-                </ul>
-              </CardContent>
+            <Card className="relative cursor-pointer transition-transform duration-300 hover:scale-105 hover:shadow-lg max-w-5xl h-[44vh] sm:h-[64vh] md:h-[80vh] mx-auto mb-8 overflow-clip ">
+              <Image
+                src={"/images/fund-overview.png"}
+                alt="fund overview image"
+                fill
+              />
             </Card>
 
             {/* Card 3 */}
-            <Card className="cursor-pointer transition-transform duration-300 hover:scale-105 hover:shadow-lg">
+            <Card className="cursor-pointer transition-transform duration-300 hover:scale-105 hover:shadow-lg max-w-5xl mx-auto mb-8 overflow-clip">
               <CardHeader className="flex flex-row items-center justify-center gap-4">
                 <ChartNoAxesCombined className="w-12 h-12 text-green-600 shrink-0" />
                 <CardTitle className="text-2xl font-bold text-center">
-                  Performance & Operational Insights
+                  Profit Distribution Modality
                 </CardTitle>
               </CardHeader>
               <CardContent className="text-left">
-                <ul className="text-gray-600 space-y-2 list-disc list-outside ml-6">
-                  <li>
-                    Historical track record (realized and unrealized
-                    performance)
-                  </li>
-                  <li>
-                    Fund projections, cash flow insights, and valuation
-                    methodology
-                  </li>
-                  <li>Risk management practices and ESG integration</li>
-                  <li>Custody, audit, and compliance arrangements</li>
-                </ul>
+                <div className="text-gray-700 mb-4">
+                  Profits from the fund are distributed following a structured
+                  waterfall model designed to prioritize the interests of
+                  Limited Partners (LPs) before General Partners (GPs) receive
+                  their carried interest.
+                </div>
+                <div className="flex gap-8 md:gap-24 text-gray-700 italic mx-auto w-fit ">
+                  {/* left div */}
+                  <div className="w-fit font-semibold flex flex-col gap-4">
+                    <div>1. Return of Capital</div>
+                    <div>2. Preferred Return (Hurdle) </div>
+                    <div>3. Carried Interest Split </div>
+                  </div>
+                  {/* right div */}
+                  <div className="w-fit flex flex-col gap-4">
+                    <div>→ LPs get original investment back</div>
+                    <div>→ LPs get 8% annually</div>
+                    <div>→ Remaining profits split (80% LP / 20% GP)</div>
+                  </div>
+                </div>
               </CardContent>
             </Card>
 
             {/* Card 4 */}
-            <Card className="cursor-pointer transition-transform duration-300 hover:scale-105 hover:shadow-lg">
-              <CardHeader className="flex flex-row items-center justify-center gap-4">
-                <LineChart className="w-12 h-12 text-green-600 shrink-0" />
-                <CardTitle className="text-2xl font-bold text-center">
-                  Investor Onboarding & Compliance
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="text-left">
-                <ul className="text-gray-600 space-y-2 list-disc list-outside ml-6">
-                  <li>Subscription agreements and investment documentation</li>
-                  <li>KYC/AML and regulatory disclosures</li>
-                  <li>
-                    Investor suitability assessment in line with applicable
-                    regulations
-                  </li>
-                </ul>
-              </CardContent>
+            <Card className="relative cursor-pointer transition-transform duration-300 hover:scale-105 hover:shadow-lg max-w-5xl h-[44vh] sm:h-[64vh] md:h-[80vh] mx-auto mb-8 overflow-clip ">
+              <Image
+                src={"/images/profit-distribution-modality.png"}
+                alt="fund overview image"
+                fill
+              />
             </Card>
           </div>
 
